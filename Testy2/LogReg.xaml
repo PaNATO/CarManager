@@ -1,0 +1,28 @@
+﻿<Window x:Class="Testy2.LogReg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Testy2"
+        mc:Ignorable="d"
+        Title="Logowanie i Rejestracja
+        " Height="389.224" Width="701.552">
+    <Grid>
+        <Label x:Name="UNameReg" Content="Username:" HorizontalAlignment="Left" Margin="380,97,0,0" VerticalAlignment="Top" Height="47" Width="105"/>
+        <Label x:Name="UPassReg" Content="Password:" HorizontalAlignment="Left" Margin="380,153,0,0" VerticalAlignment="Top" Height="47" Width="99"/>
+        <TextBox x:Name="UNameRegInput" HorizontalAlignment="Left" Height="42" Margin="484,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"/>
+        <PasswordBox x:Name="UPassRegInput" HorizontalAlignment="Left" Height="40" Margin="484,158,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label x:Name="UPassAgReg" Content="Password:" HorizontalAlignment="Left" Margin="380,207,0,0" VerticalAlignment="Top" Height="47" Width="99"/>
+        <PasswordBox x:Name="UPassAgRegInput" HorizontalAlignment="Left" Height="42" Margin="484,212,0,0" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="RegisterButton" Content="Register" HorizontalAlignment="Left" Height="48" Margin="380,284,0,0" VerticalAlignment="Top" Width="296" Click="RegisterButton_Click"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="358" Margin="322,0,0,0" VerticalAlignment="Top" Width="52"/>
+        <Label x:Name="RegisterLabel" Content="Registration" HorizontalAlignment="Left" Margin="402,10,0,0" VerticalAlignment="Top" Height="78" Width="263" FontSize="48"/>
+        <Label x:Name="UNameLog" Content="Username" HorizontalAlignment="Left" Margin="11,184,0,0" VerticalAlignment="Top" Height="36" Width="102"/>
+        <Label x:Name="UPassLog" Content="Password" HorizontalAlignment="Left" Margin="15,235,0,0" VerticalAlignment="Top" Height="36" Width="98"/>
+        <TextBox x:Name="UNameLogInput" HorizontalAlignment="Left" Height="32" Margin="120,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196"/>
+        <PasswordBox x:Name="UNamePassLogInput" HorizontalAlignment="Left" Height="31" Margin="120,235,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Height="48" Margin="5,284,0,0" VerticalAlignment="Top" Width="311" Click="LoginButton_Click"/>
+        <Label x:Name="LoginLabel" Content="Login" HorizontalAlignment="Left" Height="74" Margin="83,58,0,0" VerticalAlignment="Top" Width="143" FontSize="48"/>
+
+    </Grid>
+</Window>

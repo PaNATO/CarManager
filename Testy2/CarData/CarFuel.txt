@@ -1,0 +1,5 @@
+﻿Petrol
+Diesel
+Electric
+LPG
+CNG
