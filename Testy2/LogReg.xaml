@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Testy2"
         mc:Ignorable="d"
-        Title="Logowanie i Rejestracja
+        Title="Login and Register
         " Height="389.224" Width="701.552">
     <Grid>
         <Label x:Name="UNameReg" Content="Username:" HorizontalAlignment="Left" Margin="380,97,0,0" VerticalAlignment="Top" Height="47" Width="105"/>
