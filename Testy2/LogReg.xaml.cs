@@ -28,7 +28,10 @@ namespace Testy2
         {
             InitializeComponent();
         }
-
+        private void LoginRegDataClear()
+        {
+            UNameLogInput.Text = UNamePassLogInput.Password = UNameRegInput.Text = UPassRegInput.Password = UPassAgRegInput.Password = null;
+        }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             bool poprawnoscDanych = false;
@@ -58,14 +61,16 @@ namespace Testy2
                             UserID = UserID
                         };
                         CarData.Wyświetl();
-                        MessageBox.Show("Zalogowano!!");
-                        CarData.Show();
+                        CarData.UserCarsListFunc();
+                        MessageBox.Show("User Loged in");
                         this.Close();
+                        CarData.Show();
+                        LoginRegDataClear();
                     }
                 }
                 if (!poprawnoscDanych)
                 {
-                    MessageBox.Show("Nie ma takiego użytkownika");
+                    MessageBox.Show("User do not exist");
                 }
                 ConnectionDB.Close();
                 //if()
@@ -76,7 +81,7 @@ namespace Testy2
             }
             else
             {
-                MessageBox.Show("Nie udało się powiązać połączenia");
+                MessageBox.Show("Connection failed");
             }
         }
 
@@ -87,7 +92,7 @@ namespace Testy2
             string UserPassString = UPassRegInput.Password.ToString();
             string UserPassAgString = UPassAgRegInput.Password.ToString();
             SqlConnection ConnectionDB = new SqlConnection(connectionString);
-            string RegisterCheck = "Select 1 from Users where Username= '" + UsernameStrig + "'";
+            string RegisterCheck = "Select Username from Users where Username= '" + UsernameStrig + "'";
             if (ConnectionDB.State != ConnectionState.Open)
             {
                 ConnectionDB.Open();
@@ -97,13 +102,11 @@ namespace Testy2
                 };
                 SqlDataReader RegisterReader;
                 RegisterReader = CheckRegisteredDB.ExecuteReader();
-                while (RegisterReader.Read())
-                {
-                    if (!RegisterReader.IsDBNull(0))
+                    if ((RegisterReader.Read()) == true)
                     {
                         istniejaceDane = true;
                     }
-                }
+
                 ConnectionDB.Close();
                 if (!istniejaceDane)
                 {
@@ -117,21 +120,22 @@ namespace Testy2
                         };
                         RegisterNewDB.ExecuteNonQuery();
                         ConnectionDB.Close();
-                        MessageBox.Show("Pomyślnie zarejestrowano");
+                        LoginRegDataClear();
+                        MessageBox.Show("Register successful!");
                     }
                     else
                     {
-                        MessageBox.Show("Hasła się nie zgadzają!");
+                        MessageBox.Show("Passwords are not equal!");
                     }
                 }else
                 {
-                    MessageBox.Show("Użytkownik już istnieje!");
+                    MessageBox.Show("User already exist!");
                 }
             }
             else
             {
-                MessageBox.Show("Połączenie nieudane");
+                MessageBox.Show("Connection failed!");
             }
-            }
+        }
     }
 }

@@ -22,7 +22,7 @@
         <Label Content="Fuel Tank size:" HorizontalAlignment="Left" Margin="38,214,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="FuelTankSize" HorizontalAlignment="Left" Height="26" Margin="147,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" InputScope="Number"/>
         <Button x:Name="AddCarButton" Content="AddCar" HorizontalAlignment="Left" Margin="38,260,0,0" VerticalAlignment="Top" Width="279" Height="49" Click="AddCarButton_Click"/>
-        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Height="49" Margin="38,314,0,0" VerticalAlignment="Top" Width="279" Click="ResetButton_Click"/>
+        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Height="49" Margin="38,314,0,0" VerticalAlignment="Top" Width="279" Click="ResetButton_Click" ClickMode="Press"/>
         <Button x:Name="GoBackButton" Content="GoBack" HorizontalAlignment="Left" Height="49" Margin="38,368,0,0" VerticalAlignment="Top" Width="279" Click="GoBackButton_Click"/>
         <Label x:Name="ErrorsOutput" Content="" HorizontalAlignment="Left" Margin="38,433,0,0" VerticalAlignment="Top" Width="279" Height="58" Foreground="Red" FontWeight="Bold"/>
 

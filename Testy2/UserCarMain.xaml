@@ -1,0 +1,179 @@
+﻿<Window x:Class="Testy2.UserCarMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Testy2"
+        mc:Ignorable="d"
+        Title="User Cars" Height="480.084" Width="818.802">
+    <Grid>
+        <Label x:Name="UUsernameCar" Content="Username" FontSize="18px"></Label>
+        <StackPanel>
+            <Label Name="UCurrentCar" Content="Current Car: " FontSize="20px" HorizontalAlignment="Center"></Label>
+            <TabControl x:Name="UserCarsTabControl" Height="332" SelectionChanged="UserCarsTabControl_SelectionChanged">
+                <TabItem x:Name="PeriodicInspectionTabItem" Header="Periodic inspection">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Label Content="Next inspection date" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label Content="Date: " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Label Content="Mileage(km): " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="0"/>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <Label Content="Last filters change" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label Content="Filter oil date: " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Label Content="Filter air date: " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Label Content="Filter fuel date: " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Label Content="Filter cabin date: " HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="1"/>
+                        <Label Content="Oil type: " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3"/>
+                        <TextBox x:Name="ActualUsedOilTextBox" Height="25"  VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" IsEnabled="False"></TextBox>
+                        <StackPanel x:Name="ActualRepairsStackPanel" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,15" IsEnabled="False">
+                            <DatePicker x:Name="ActualInspectionDate" Margin="0,2"/>
+                            <TextBox x:Name="ActualMileageTextBox" Height="23"></TextBox>
+                        </StackPanel>
+                        <StackPanel x:Name="NextRepairsStackPanel" Grid.Column="3" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,15" IsEnabled="False"/>
+                        <StackPanel x:Name="LastFiltersChangeStackPanel" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,10" IsEnabled="False">
+                            <DatePicker x:Name="ActualOilFilterDate" Margin="0,1"/>
+                            <DatePicker x:Name="ActualAirFilterDate" Margin="0,1"/>
+                            <DatePicker x:Name="ActualFuelFilterDate" Margin="0,1"/>
+                            <DatePicker x:Name="ActualCabinFilterDate" Margin="0,1"/>
+                        </StackPanel>
+                        <StackPanel x:Name="NextFiltersChangeStackPanel" Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,10" IsEnabled="False"/>
+                        <Button x:Name="PeriodicInspectionUpdateDataButton" Content="Update" Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" Height="30" Margin="4" Click="PeriodicInspectionUpdateDataButton_Click"></Button>
+                        <Button x:Name="PeriodicInspectionSaveDataButton" Content="Save" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" Height="30" Margin="4" Click="PeriodicInspectionSaveDataButton_Click" IsEnabled="False"></Button>
+
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="RepairLogTabItem" Header="Repair log">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Label Content="Repair Date:"></Label>
+                            <Label Content="Mileage(Km):"></Label>
+                            <Label Content="Repair/Change"></Label>
+                            <Label Content="Paid(pln):"></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <DatePicker x:Name="AddRepairDoneDate" Margin="2,3,450,0"></DatePicker>
+                            <TextBox x:Name="AddRepairDoneMileageTextBox" Height="22" Margin="2,3,450,0"></TextBox>
+                            <TextBox x:Name="AddRepairChangeTextBox" Height="22" Margin="2,3,450,0"></TextBox>
+                            <TextBox x:Name="AddRepairCostTextBox" Height="22" Margin="2,3,450,0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="1">
+                            <ListBox x:Name="UserCarRepairsListBox" Height="170"  Margin="2,4,2,0"  >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <TextBlock Text="{Binding RepairDate}" FontSize="15" Margin="5"></TextBlock>
+                                            <TextBlock Text="{Binding RepairMileage}" FontSize="15" Margin="5"></TextBlock>
+                                            <TextBlock Text="{Binding RepairChange}" FontSize="15" Margin="5"></TextBlock>
+                                            <TextBlock Text="{Binding RepairPaid}" FontSize="15" Margin="5"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+                            <Button x:Name="AddRepairSaveButton" Content="Save" Height="30" Margin="0,4" Click="AddRepairSaveButton_Click"></Button>
+                            <Button x:Name="AddRepairResetButton" Content="Reset" Height="30" Margin="0,4" Click="AddRepairResetButton_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="RefuelLogTabItem" Header="Refuel log">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="182"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Label Content="Traveled distance on tank: "></Label>
+                            <Label Content="Mileage:  "></Label>
+                            <Label Content="Fuel type: "></Label>
+                            <Label Content="Refueled(liter): "></Label>
+                            <Label Content="Price/liter: "></Label>
+                            <Label Content="Paid(pln): "></Label>
+                            <Label Content="Refuel date: "></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <TextBox x:Name="AddRefuelTraveledDistanceTextBox" Height="22" Margin="0,1"></TextBox>
+                            <TextBox x:Name="AddRefuelMileageTextBox" Height="22" Margin="0,2"></TextBox>
+                            <TextBox x:Name="AddRefuelFuelTypeTextBox" Height="22" Margin="0,2"></TextBox>
+                            <TextBox x:Name="AddRefuelFuelAmountTextBox" Height="22" Margin="0,2"></TextBox>
+                            <TextBox x:Name="AddRefuelFuelPriceTextBox" Height="22" Margin="0,2"></TextBox>
+                            <TextBox x:Name="AddRefuelPriceTextBox" Height="22" Margin="0,2"></TextBox>
+                            <DatePicker x:Name="AddRefuelDateDatePicker" Height="25" Margin="0,2"></DatePicker>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                            <Button x:Name="AddRefuelDataFromReceiptButton" Height="30" Margin="2,4,2,4" Content="Data from receipt: " Click="DataFromReceiptButton_Click"></Button>
+                            <Button x:Name="AddRefuelDataSaveButton"  Content="Save" Height="30" Margin="2,4,2,4" Click="AddRefuelDataSaveButton_Click"></Button>
+                            <Button x:Name="AddRefuelDataResetButton"  Content="Reset" Height="30" Margin="2,4,2,4" Click="AddRefuelDataResetButton_Click"></Button>
+                        </StackPanel>
+                        <TextBox x:Name="DataFromReceiptTextBox" Grid.Column="1" Grid.Row="1"></TextBox>
+                        <ListBox x:Name="UserCarRefuelLogListBox" Margin="256,0,-380,77" Grid.Column="1" Grid.RowSpan="2">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding TraveledDistanceTank}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelMileage}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelFuelType}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelLiters}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelPricePerLiter}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelPaid}" FontSize="12" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding RefuelDate}" FontSize="12" Margin="5"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="StatisticTabItem" Header="Statistics">
+                    <Grid Background="#FFE5E5E5">
+                        <ListBox x:Name="UserCarsStatisticListBox" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="805">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding RepairCosts}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding TraveledKilometers}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding FirstRepairDate}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding BestTankDistance}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding PricyRefuel}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding LifetimeCombustion}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding BurnedFuel}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding PaidForFuel}" FontSize="15" Margin="5"></TextBlock>
+                                        <TextBlock Text="{Binding AllCarCosts}" FontSize="15" Margin="5"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        <Button x:Name="UserCarChangeCarButton" Content="Change car" Height="40" Width="140" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20" Click="UserCarChangeCarButton_Click"></Button>
+        <Button x:Name="UserCarLogoutButton" Content="Logout" Height="40" Width="140" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20,0,180,20" Click="UserCarLogoutButton_Click"></Button>
+    </Grid>
+</Window>

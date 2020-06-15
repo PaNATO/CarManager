@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="Cars Menu" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.5,0.463">
-        <Label Content="Username: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.615"/>
-        <Label x:Name="UNameShow" Content="" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" Width="153"/>
-        <Button x:Name="AddCarButton" Content="Add Car" HorizontalAlignment="Left" Height="121" Margin="267,261,0,0" VerticalAlignment="Top" Width="274" Click="AddCarButton_Click"/>
-        <ListBox x:Name="UserCarsList" HorizontalAlignment="Left" Height="206" Margin="10,41,0,0" VerticalAlignment="Top" Width="772">
+        <Label Content="Username: " HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.615" FontSize="20"/>
+        <Label x:Name="UNameShow" Content="" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="153" FontSize="20"/>
+        <Button x:Name="AddCarButton" Content="Add Car" HorizontalAlignment="Left" Height="121" Margin="110,260,0,0" VerticalAlignment="Top" Width="274" Click="AddCarButton_Click"/>
+        <Button x:Name="RefreshCarButton" Content="Refresh Cars" HorizontalAlignment="Left" Height="121" Margin="420,260,0,0" VerticalAlignment="Top" Width="274" Click="RefreshCarButton_Click"/>
+        <ListBox x:Name="UserCarsList" HorizontalAlignment="Left" Height="206" Margin="10,41,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="UserCarList_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">

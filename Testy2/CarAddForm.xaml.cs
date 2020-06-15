@@ -135,18 +135,18 @@ namespace Testy2
                 };
                 CarAdd.ExecuteNonQuery();
                 ConnectionToDB.Close();
-                CarMenu carMenu = new CarMenu();
-                carMenu.Show();
-                MessageBox.Show("Pomyślnie dodano samochód");
+                //CarMenu carMenu = new CarMenu();
+                //carMenu.Show();
+                MessageBox.Show("Car added");
             }
             else
             {
-                MessageBox.Show("Nie udało się dodać samochodu");
+                MessageBox.Show("Operation failed!");
             }
             this.Close();
         }
 
-        public void Binding()
+        public void UserIDBinding()
         {
              UserIDTemp = UserID;
         }

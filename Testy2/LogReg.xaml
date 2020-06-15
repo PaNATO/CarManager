@@ -15,7 +15,7 @@
         <Label x:Name="UPassAgReg" Content="Password:" HorizontalAlignment="Left" Margin="380,207,0,0" VerticalAlignment="Top" Height="47" Width="99"/>
         <PasswordBox x:Name="UPassAgRegInput" HorizontalAlignment="Left" Height="42" Margin="484,212,0,0" VerticalAlignment="Top" Width="192"/>
         <Button x:Name="RegisterButton" Content="Register" HorizontalAlignment="Left" Height="48" Margin="380,284,0,0" VerticalAlignment="Top" Width="296" Click="RegisterButton_Click"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="358" Margin="322,0,0,0" VerticalAlignment="Top" Width="52"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="400" Margin="322,0,0,0" VerticalAlignment="Top" Width="52"/>
         <Label x:Name="RegisterLabel" Content="Registration" HorizontalAlignment="Left" Margin="402,10,0,0" VerticalAlignment="Top" Height="78" Width="263" FontSize="48"/>
         <Label x:Name="UNameLog" Content="Username" HorizontalAlignment="Left" Margin="11,184,0,0" VerticalAlignment="Top" Height="36" Width="102"/>
         <Label x:Name="UPassLog" Content="Password" HorizontalAlignment="Left" Margin="15,235,0,0" VerticalAlignment="Top" Height="36" Width="98"/>
