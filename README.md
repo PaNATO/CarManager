@@ -1,6 +1,7 @@
 # CarManager
 ## Description
 #### CarManager is an app for someone who own car/s. The app allow user to keep information about car like oil change or timing belt interval.
+#### App Created in Visiual Studio in C# with local database and image system recognition Iron-OCR
 ## App functionality
 + Creating user
 + Logging to user
